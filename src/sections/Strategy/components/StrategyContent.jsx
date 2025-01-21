@@ -3,7 +3,7 @@ import OverviewSection from './OverviewSection';
 import CampaignSection from './CampaignSection';
 import PersonasSection from './PersonasSection';
 import AccountTargetingSection from './AccountTargetingSection';
-import MetricsSection from './MetricsSection';
+import MetricsSection from './ABMStrategySection';
 
 const StrategyContent = ({ currentSection }) => {
   const renderSection = () => {

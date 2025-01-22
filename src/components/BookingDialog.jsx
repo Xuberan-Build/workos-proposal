@@ -37,7 +37,7 @@ const BookingForm = ({ onComplete }) => {
 
   if (step === 1) {
     return (
-      <div className="space-y-4 p-4">
+      <div className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="fullName">Full Name</Label>
           <Input
@@ -74,7 +74,7 @@ const BookingForm = ({ onComplete }) => {
   }
 
   return (
-    <div className="space-y-4 p-4">
+    <div className="space-y-4">
       <div className="space-y-2">
         <Label htmlFor="role">Role</Label>
         <Select onValueChange={(value) => handleInputChange('role', value)}>
@@ -82,9 +82,9 @@ const BookingForm = ({ onComplete }) => {
             <SelectValue placeholder="Select your role" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="technical">Technical Leadership</SelectItem>
-            <SelectItem value="business">Business Leadership</SelectItem>
-            <SelectItem value="product">Product Leadership</SelectItem>
+            <SelectItem value="technical">Technical Manager</SelectItem>
+            <SelectItem value="business">Business Manager</SelectItem>
+            <SelectItem value="product">Hiring Manager</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -102,15 +102,15 @@ const BookingForm = ({ onComplete }) => {
           </SelectContent>
         </Select>
       </div>
-      <div className="h-[600px] w-full mt-6">
+      <div className="max-h-[50vh] mt-4">
         <iframe
           src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ14pSdT57UMffOY9pWiLb0z0b0tu9WUZuJ1q050pXyTC0ADfI3d_DsAf3HjiSs2AlSX-yWs7F5e?gv=true"
-          className="w-full h-full border-0 rounded-lg"
+          className="w-full h-full min-h-[300px] border-0 rounded-lg"
           frameBorder="0"
           title="Schedule Appointment"
         />
       </div>
-      <Button onClick={handleSubmit}>
+      <Button onClick={handleSubmit} className="mt-4">
         Complete Booking
       </Button>
     </div>
@@ -132,7 +132,7 @@ export const BookingDialog = ({ children }) => {
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[600px]">
+      <DialogContent className="w-[90vw] max-w-[600px] max-h-[85vh] p-4 overflow-y-auto">
         <DialogHeader>
           <DialogTitle>
             {showForm ? 'Book an Interview to Access Strategy' : 'Booking Confirmed!'}
@@ -143,19 +143,21 @@ export const BookingDialog = ({ children }) => {
               : 'Thank you for booking. You will receive a calendar invitation shortly. You can now access the full strategy content.'}
           </DialogDescription>
         </DialogHeader>
-        {showForm && <BookingForm onComplete={handleBookingComplete} />}
-        {showSuccess && (
-          <div className="p-4 space-y-4">
-            <Card className="p-4 bg-green-50">
-              <p className="text-green-700">Your booking has been confirmed! Check your email for the calendar invitation.</p>
-            </Card>
-            <Button asChild className="w-full">
-              <Link to="/strategy">
-                Access Strategy Content
-              </Link>
-            </Button>
-          </div>
-        )}
+        <div className="mt-4">
+          {showForm && <BookingForm onComplete={handleBookingComplete} />}
+          {showSuccess && (
+            <div className="space-y-4">
+              <Card className="p-4 bg-green-50">
+                <p className="text-green-700">Your booking has been confirmed! Check your email for the calendar invitation.</p>
+              </Card>
+              <Button asChild className="w-full">
+                <Link to="/strategy">
+                  Access Strategy Content
+                </Link>
+              </Button>
+            </div>
+          )}
+        </div>
       </DialogContent>
     </Dialog>
   );

@@ -18,7 +18,7 @@ const Hero = () => {
           </h1>
 
           <div className="space-y-4 text-gray-400 text-lg md:text-xl">
-            <p>More SQLs, Less Guess work</p>
+            <p>More SQLs, Less guess work</p>
           </div>
           <div className="space-y-4 text-gray-600 text-lg md:text-xl">
             <p>A qualified candidate demonstrating the playbook you need</p>
